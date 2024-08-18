@@ -13,6 +13,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class Server implements ActionListener {
     //global declrations
@@ -178,12 +179,15 @@ public class Server implements ActionListener {
     }
 
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please provide the port number : ");
+        int portNumber = sc.nextInt();
         //annanomus object
         new Server();
 
         //Socket Programming
         try{
-            ServerSocket skt = new ServerSocket(6001);
+            ServerSocket skt = new ServerSocket(portNumber);
             while(true){
                 Socket s = skt.accept();
                 DataInputStream din = new DataInputStream(s.getInputStream());

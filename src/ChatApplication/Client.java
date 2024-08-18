@@ -11,6 +11,7 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Scanner;
 
 public class Client implements ActionListener {
     //global declrations
@@ -178,12 +179,17 @@ public class Client implements ActionListener {
     }
 
     public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please provide the ip Address : ");
+        String ipAddress = sc.next();
+        System.out.print("Please  provide port number : ");
+        int portNumber = sc.nextInt();
         //annanomus object
         new Client();
 
         //socket programming
         try{
-            Socket s = new Socket("127.0.0.1", 6001);
+            Socket s = new Socket(ipAddress, portNumber);
             DataInputStream din = new DataInputStream(s.getInputStream());
             dout = new DataOutputStream(s.getOutputStream());
 
